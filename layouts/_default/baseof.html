@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {{- template "_internal/opengraph.html" . -}}
+    {{- template "_internal/google_news.html" . -}}
+    {{- template "_internal/schema.html" . -}}
+    {{- template "_internal/twitter_cards.html" . -}}
+
+    {{ .Hugo.Generator }}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>{{ with .Title }}{{ . }} - {{ end }}{{ .Site.Title }}</title>
+  </head>
+  <body>
+    {{ partialCached "header" . }}
+    <main class="wrapper">
+      {{ block "content" . }}{{ end }}
+    </main>
+    {{ partialCached "footer" . }}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  </body>
+  </html>
