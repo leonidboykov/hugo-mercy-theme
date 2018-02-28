@@ -1,5 +1,7 @@
 ## Mercy
 
+[![dependencies Status](https://david-dm.org/leonidboykov/hugo-mercy-theme/status.svg)](https://david-dm.org/leonidboykov/hugo-mercy-theme) [![devDependencies Status](https://david-dm.org/leonidboykov/hugo-mercy-theme/dev-status.svg)](https://david-dm.org/leonidboykov/hugo-mercy-theme?type=dev)
+
 Mercy is a minimal blog theme for [Hugo](https://gohugo.io).
 
 ### Installation
