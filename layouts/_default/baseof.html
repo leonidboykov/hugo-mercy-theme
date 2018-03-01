@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
     <link rel="stylesheet" href="/css/main.css">
 
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/brands.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/fontawesome.js"></script>
+
     <title>{{ with .Title }}{{ . }} - {{ end }}{{ .Site.Title }}</title>
   </head>
   <body>
@@ -23,6 +26,5 @@
       {{ block "content" . }}{{ end }}
     </main>
     {{ partialCached "footer" . }}
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </body>
 </html>
