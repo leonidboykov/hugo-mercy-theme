@@ -6,9 +6,9 @@
   "scripts": {
     "build": "npm run build-clean && npm run build-sass && npm run build-postcss",
     "build-clean": "rimraf static/css",
-    "build-postcss": "postcss --use autoprefixer cssnano css-mqpacker --no-map --output static/css/main.css static/css/main.css",
+    "build-postcss": "postcss --output static/css/main.css static/css/main.css",
     "build-sass": "node-sass --output-style expanded sass/main.sass static/css/main.css",
-    "serve": "npm run build-sass -- --watch"
+    "start": "npm run build-sass -- --watch"
   },
   "repository": {
     "type": "git",
