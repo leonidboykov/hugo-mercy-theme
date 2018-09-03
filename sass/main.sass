@@ -1,10 +1,20 @@
-@import "../node_modules/normalize.css/normalize"
-@import "../node_modules/milligram/src/milligram.sass"
+@charset "utf-8"
 
-html body
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing: antialiased
-  text-rendering: optimizeLegibility
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600')
 
-@import wrapper
-@import navigation
+// Overrides
+// Colors
+$deep-lilac: #8C43FF
+$deep-lilac-invert: #fff
+
+$primary: $deep-lilac
+$primary-invert: $deep-lilac-invert
+
+$link: $deep-lilac
+
+// Fonts
+$family-sans-serif: "Nunito", sans-serif
+
+@import bulma
+@import mercy

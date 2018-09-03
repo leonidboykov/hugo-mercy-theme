@@ -1,16 +1,35 @@
 {{ define "content" }}
-  <section class="container">
-    <h2>{{ .Title }}</h2>
-    {{ .Content }}
+  <section class="section">
+    <div class="container">
+      <article class="content">{{ .Content }}</article>
+    </div>
   </section>
-  {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-  {{ if $related }}
-    {{ partial "posts-list-lite" (dict "Title" "Related Posts" "Pages" $related) }}
+
+  {{ $posts := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+  {{ if $posts }}
+    <section class="section">
+      <div class="container">
+        <h3 class="title is-3">{{ "related-posts" | i18n }}</h3>
+        {{ range $posts }}
+          <article class="media">
+            <div class="media-content">
+              <a href="{{ .URL }}">{{ .LinkTitle }}</a>
+            </div>
+            <div class="media-right">
+              <span class="is-size-7-mobile has-text-grey-light">{{ .Date.Format "2 Jan 2006" }}</span>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </section>
   {{ end }}
-  <section class="container">
-    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
-      <h3>Comments</h3>
-      {{ template "_internal/disqus.html" . }}
-    {{ end }}
-  </section>
+
+  {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+    <section class="section">
+      <div class="container">
+        <h3 class="title is-3">{{ "comments" | i18n }}</h3>
+        {{ template "_internal/disqus.html" . }}
+      </div>
+    </section>
+  {{ end }}
 {{ end }}

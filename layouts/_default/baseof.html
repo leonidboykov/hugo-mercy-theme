@@ -21,10 +21,11 @@
     <title>{{ with .Title }}{{ . }} - {{ end }}{{ .Site.Title }}</title>
   </head>
   <body>
-    {{ partialCached "header" . }}
-    <main class="wrapper">
+    {{ partial "header" . }}
+    <main>
       {{ block "content" . }}{{ end }}
     </main>
     {{ partialCached "footer" . }}
+    <script src="/js/main.js"></script>
   </body>
 </html>
