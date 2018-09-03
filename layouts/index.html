@@ -1,10 +1,28 @@
 {{ define "content" }}
   {{ if .Content }}
-  <section class="container">
-    {{ .Content }}
+  <section class="section">
+    <div class="container">
+      <div class="content">
+        {{ .Content }}
+      </div>
+    </div>
   </section>
   {{ end }}
 
   {{ $posts := first 5 (where .Site.RegularPages "Section" "post") }}
-  {{ partial "posts-list-lite" (dict "Title" "Recent Posts" "Pages" $posts) }}
+  <section class="section">
+    <div class="container">
+      <h3 class="title is-3">{{ "recent-posts" | i18n }}</h3>
+      {{ range first 5 (where .Site.RegularPages "Section" "post") }}
+        <article class="media">
+          <div class="media-content">
+            <a href="{{ .URL }}">{{ .LinkTitle }}</a>
+          </div>
+          <div class="media-right">
+            <span class="is-size-7-mobile has-text-grey-light">{{ .Date.Format "2 Jan 2006" }}</span>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </section>
 {{ end }}

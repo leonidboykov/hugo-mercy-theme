@@ -1,9 +1,20 @@
-<section class="container">
-  <h3>{{ .Title }}</h3>
-  {{ range .Pages }}
-  <div class="clearfix">
-    <div class="float-left"><a href="{{ .URL }}">{{ .LinkTitle }}</a></div>
-    <div class="float-right">{{ .Date.Format "2 Jan 2006" }}</div>
+<section class="section">
+  <div class="container">
+    <h3 class="title is-3">{{ .Title }}</h3>
+    {{ range .Pages }}
+      <div class="level">
+        <div class="level-left">
+          <a class="level-item" href="{{ .URL }}">{{ .LinkTitle }}</a>
+        </div>
+        <div class="level-right">
+          <div class="level-item">{{ .Date.Format "2 Jan 2006" }}</div>
+        </div>
+      </div>
+    {{ end }}
+    {{ range .Pages }}
+    <ul>
+      <li><a href="{{ .URL }}">{{ .LinkTitle }}</a></li>
+    </ul>
+    {{ end }}
   </div>
-  {{ end }}
 </section>

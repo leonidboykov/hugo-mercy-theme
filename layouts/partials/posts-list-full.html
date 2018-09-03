@@ -1,7 +1,13 @@
-{{ range .Pages }}
-  <article class="container">
-    <h3><a href="{{ .URL }}">{{ .Title }}</a></h3>
-    <p>{{ .Summary }}</p>
-    <a class="button button-outline" href="{{ .URL }}">Read More</a>
-  </article>
-{{ end }}
+<div class="section">
+  <div class="container">
+    {{ range .Pages }}
+      <article class="media">
+        <div class="media-body">
+          <h3 class="title is-3"><a href="{{ .URL }}">{{ .Title }}</a></h3>
+          <p class="content">{{ .Summary }}</p>
+          <a class="button is-link is-outlined" href="{{ .URL }}">{{ "read-more" | i18n }}</a>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+</div>
