@@ -1,7 +1,11 @@
 <nav class="navbar">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">{{ .Site.Title }}</a>
+      {{ if .Site.Params.favicon }}
+        <a class="navbar-item" href="/"><img src="favicon-256.png" alt="{{ .Site.Title }}"></a>
+      {{ else }}
+        <a class="navbar-item" href="/">{{ .Site.Title }}</a>
+      {{ end }}
       {{ range .Site.Menus.social }}
           <a class="navbar-item" href="{{ .URL }}"><span class="icon"><i class="fab fa-{{ .Name }}"></i></span></a>
         {{ end }}
