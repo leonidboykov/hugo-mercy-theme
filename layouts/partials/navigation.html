@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-brand">
       {{ if .Site.Params.favicon }}
-        <a class="navbar-item" href="/"><img src="favicon-256.png" alt="{{ .Site.Title }}"></a>
+        <a class="navbar-item" href="/"><img src="/favicon-256.png" alt="{{ .Site.Title }}"></a>
       {{ else }}
         <a class="navbar-item" href="/">{{ .Site.Title }}</a>
       {{ end }}
@@ -17,8 +17,9 @@
     </div>
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-end">
+        {{ $currentPage := .Page }}
         {{ range .Site.Menus.main }}
-          <a class="navbar-item" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+          <a class="navbar-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}is-active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
         {{ end }}
         {{ range .Site.Menus.social }}
           <a class="navbar-item is-hidden-touch" href="{{ .URL }}"><span class="icon"><i class="fab fa-{{ .Name }}"></i></span></a>
