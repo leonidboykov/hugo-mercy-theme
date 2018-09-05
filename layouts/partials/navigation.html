@@ -2,7 +2,7 @@
   <div class="container">
     <div class="navbar-brand">
       {{ if .Site.Params.favicon }}
-        <a class="navbar-item" href="/"><img src="/favicon-256.png" alt="{{ .Site.Title }}"></a>
+        <a class="navbar-item" href="/"><img src="{{ .Site.Params.favicon }}" alt="{{ .Site.Title }}"></a>
       {{ else }}
         <a class="navbar-item" href="/">{{ .Site.Title }}</a>
       {{ end }}
