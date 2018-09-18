@@ -1,6 +1,6 @@
 {
-  "name": "hugo-mercy-theme",
-  "version": "0.1.0",
+  "name": "hugo-theme-mercy",
+  "version": "0.2.0",
   "description": "Minimal clean blog theme for Hugo",
   "main": "sass/main.sass",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leonidboykov/hugo-mercy-theme.git"
+    "url": "git+https://github.com/leonidboykov/hugo-theme-mercy.git"
   },
   "keywords": [
     "hugo",
@@ -23,9 +23,9 @@
   "author": "Leonid Boykov <leonid.v.boykov@gmail.com> (https://leonidboykov.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leonidboykov/hugo-mercy-theme/issues"
+    "url": "https://github.com/leonidboykov/hugo-theme-mercy/issues"
   },
-  "homepage": "https://github.com/leonidboykov/hugo-mercy-theme#readme",
+  "homepage": "https://github.com/leonidboykov/hugo-theme-mercy#readme",
   "devDependencies": {
     "autoprefixer": "^9.1.5",
     "cssnano": "^4.1.0",
