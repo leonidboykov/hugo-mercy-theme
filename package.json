@@ -1,6 +1,6 @@
 {
   "name": "hugo-theme-mercy",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Minimal clean blog theme for Hugo",
   "main": "sass/main.sass",
   "scripts": {
