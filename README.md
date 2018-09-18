@@ -1,5 +1,7 @@
 ## Mercy
 
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=leonidboykov/hugo-theme-mercy)](https://dependabot.com)
+
 Mercy is a minimal blog theme for [Hugo](https://gohugo.io).
 
 ### Installation
