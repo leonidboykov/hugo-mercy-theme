@@ -1,0 +1,26 @@
+{{ define "content" }}
+  <section class="section">
+    <div class="container">
+      {{ $reposGH := getJSON (printf .Site.Data.repo.github.api .Site.Params.github) }}
+      <div class="columns is-multiline">
+        {{ range sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
+          <div class="column is-6">
+            <div class="card is-fullheight">
+              <div class="card-header">
+                <div class="card-header-title"><a href="{{ .html_url }}">{{ .name }}</a></div>
+                <div class="card-header-icon">
+                  <span class="icon">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="card-content">
+                <p>{{ .description }}</p>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

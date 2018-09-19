@@ -1,5 +1,14 @@
 <footer class="footer">
   <div class="container has-text-centered-mobile">
-    <p>{{ (replace .Site.Copyright "{year}" now.Year) | safeHTML }}</p>
+    <div class="level">
+      <div class="level-left">
+        <p>{{ (replace .Site.Copyright "{year}" now.Year) | safeHTML }}</p>
+      </div>
+      <div class="level-right is-hidden-mobile">
+        {{ range .Site.Menus.social }}
+          <a class="navbar-item" href="{{ .URL }}"><span class="icon"><i class="fab fa-{{ .Name }}"></i></span></a>
+        {{ end }}
+      </div>
+    </div>
   </div>
 </footer>
