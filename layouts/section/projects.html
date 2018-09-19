@@ -2,6 +2,10 @@
   <section class="section">
     <div class="container">
       {{ $reposGH := getJSON (printf .Site.Data.repo.github.api .Site.Params.github) }}
+      {{ $reposGH = sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
+      {{ if .Site.Data.projects.exclude }}
+        {{ $reposGH = where $reposGH ".name" "not in" .Site.Data.projects.exclude }}
+      {{ end }}
       <div class="columns is-multiline">
         {{ range sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
           <div class="column is-6">
