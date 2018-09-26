@@ -12,3 +12,6 @@
 
 [view-on]
   other = "View on"
+
+[projects-list]
+  other = "{{ .name }} Projects"

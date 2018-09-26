@@ -1,30 +1,75 @@
 {{ define "content" }}
+
+{{ $reposGH := "" }}
+{{ if .Site.Params.github }}
+  {{ $reposGH = getJSON (printf .Site.Data.repo.github.api .Site.Params.github) }}
+  {{ $reposGH = sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
+  {{ if .Site.Data.projects.github.ignore }}
+    {{ $reposGH = where $reposGH ".name" "not in" .Site.Data.projects.github.ignore }}
+  {{ end }}
+{{ end }}
+
+{{ $reposGL := "" }}
+{{ if .Site.Params.gitlab }}
+  {{ $reposGL = getJSON (printf .Site.Data.repo.gitlab.api .Site.Params.gitlab) }}
+  {{ $reposGL = sort $reposGL ".pushed_at" "desc" }}
+  {{ if .Site.Data.projects.gitlab.ignore }}
+    {{ $reposGL = where $reposGL ".name" "not in" .Site.Data.projects.gitlab.ignore }}
+  {{ end }}
+{{ end }}
+
+{{ $reposBB := "" }}
+{{ if .Site.Params.bitbucket }}
+  {{ $reposBB = getJSON (printf .Site.Data.repo.bitbucket.api .Site.Params.bitbucket) }}
+  {{ $reposBB = $reposBB.values }}
+  {{ $reposBB = sort $reposBB ".updated_on" "desc" }}
+  {{ if .Site.Data.projects.bitbucket.ignore }}
+    {{ $reposBB = where $reposBB ".name" "not in" .Site.Data.projects.bitbucket.ignore }}
+  {{ end }}
+{{ end }}
+
+{{/*
+  {{ range slice "github" "gitlab" "bitbucket" }}
+    {{ $repoConfig := index $.Site.Data.repo . }}
+  {{ end }}
+*/}}
+
+{{ if $reposGH }}
   <section class="section">
     <div class="container">
-      {{ $reposGH := getJSON (printf .Site.Data.repo.github.api .Site.Params.github) }}
-      {{ $reposGH = sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
-      {{ if .Site.Data.projects.exclude }}
-        {{ $reposGH = where $reposGH ".name" "not in" .Site.Data.projects.exclude }}
-      {{ end }}
+      <h2 class="title is-3">{{ i18n "projects-list" .Site.Data.repo.github }}</h2>
       <div class="columns is-multiline">
-        {{ range sort (where $reposGH ".archived" false) ".pushed_at" "desc" }}
-          <div class="column is-6">
-            <div class="card is-fullheight">
-              <div class="card-header">
-                <div class="card-header-title"><a href="{{ .html_url }}">{{ .name }}</a></div>
-                <div class="card-header-icon">
-                  <span class="icon">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-              <div class="card-content">
-                <p>{{ .description }}</p>
-              </div>
-            </div>
-          </div>
+        {{ range $reposGH }}
+          {{ partial "repo-card" (dict "name" .name "description" .description "url" .html_url) }}
         {{ end }}
       </div>
     </div>
   </section>
+{{ end }}
+
+{{ if $reposGL }}
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3">{{ i18n "projects-list" .Site.Data.repo.gitlab }}</h2>
+      <div class="columns is-multiline">
+        {{ range $reposGL }}
+        {{ partial "repo-card" (dict "name" .name "description" .description "url" .web_url "icon" "gitlab") }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ if $reposBB }}
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3">{{ i18n "projects-list" .Site.Data.repo.bitbucket }}</h2>
+      <div class="columns is-multiline">
+        {{ range $reposBB }}
+        {{ partial "repo-card" (dict "name" .name "description" .description "url" .links.html.href "icon" "bitbucket") }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}
 {{ end }}

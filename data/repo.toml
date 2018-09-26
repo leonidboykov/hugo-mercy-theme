@@ -8,31 +8,10 @@
   name = "GitLab"
   icon = "gitlab"
   url  = "https://gitlab.com/%s/%s/"
+  api  = "https://gitlab.com/api/v4/users/%s/projects"
 
 [bitbucket]
   name = "Bitbucket"
   icon = "bitbucket"
   url  = "https://bitbucket.org/%s/%s/"
-
-
-
-# {{ $.Scratch.Set "link" .RelPermalink }}
-# {{ with .Params.repo }}
-#   {{ $repoHost := default "github" $.Params.repoHost }}
-#   <!-- TODO: This part may be done with data files -->
-#   {{ if eq "github" $repoHost }}
-#     {{ printf "https://github.com/%s/%s/" $.Site.Params.githubUsername . | $.Scratch.Set "link" }}
-#   {{ else if eq "gitlab" $repoHost }}
-#     {{ printf "https://gitlab.com/%s/%s/" $.Site.Params.gitlabUsername . | $.Scratch.Set "link" }}
-#   {{ else if eq "bitbucket" $repoHost }}
-#     {{ printf "https://bitbucket.org/%s/%s/" $.Site.Params.bitbucketUsername . | $.Scratch.Set "link" }}
-#   {{ end }}
-# {{ end }}
-# {{ with .Params.link }} {{ $.Scratch.Set "link" . }} {{ end }}
-# {{ with .Description }} {{ $.Scratch.Set "subtitle" . }} {{ end }}
-# <a class="button is-primary is-outlined" href="{{ $.Scratch.Get "link" }}">
-#   <span class="icon">
-#     <i class="fab fa-{{ $.Params.repoHost | default "github" }}"></i>
-#   </span>
-#   <span>{{ "view-on" | i18n }} {{ $.Params.repoHost | default "github" | title }}</span>
-# </a>
+  api  = "https://api.bitbucket.org/2.0/repositories/%s"
