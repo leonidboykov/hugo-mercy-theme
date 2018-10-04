@@ -15,3 +15,18 @@
 
 [projects-list]
   other = "{{ .name }} Projects"
+
+[reading-time]
+  other = "reading time {{ .Count }} min."
+
+[previous]
+  other = "Previous"
+
+[next]
+  other = "Next page"
+
+[page]
+  other = "Page {{ .Count }}"
+
+[goto-page]
+  other = "Goto page {{ .Count }}"

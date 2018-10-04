@@ -1,15 +1,29 @@
-<section class="container">
 {{ if or .Paginator.HasPrev .Paginator.HasNext }}
-  <div class="clearfix">
-    {{ if .Paginator.HasPrev }}
-    <a class="button button-outline float-left" href="{{ .Paginator.Prev.URL }}" rel="prev">
-      prev
-    </a>
-    {{ end }} {{ if .Paginator.HasNext }}
-    <a class="button button-outline float-right" href="{{ .Paginator.Next.URL }}" rel="next">
-      next
-    </a>
+<section class="container">
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" {{ if .Paginator.HasPrev }}href="{{ .Paginator.Prev.URL }}"{{ else }}disabled{{ end}}>{{ i18n "previous"}}</a>
+    <a class="pagination-next" {{ if .Paginator.HasNext }}href="{{ .Paginator.Next.URL }}"{{ else }}disabled{{ end}}>{{ i18n "next"}}</a>
+    {{/*
+    {{ if ge .Paginator.TotalPages }}
+      <ul class="pagination-list is-hidden-mobile">
+        {{ if ge .Paginator.TotalPages 5 }}
+        <li><a class="pagination-link" href="{{ .Paginator.First.URL }}" aria-label="Goto page 1">1</a></li>
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        {{ end }}
+        {{ if .Paginator.HasPrev }}
+          <li><a class="pagination-link" aria-label="{{ i18n "goto-page" .Paginator.Prev.PageNumber }}">{{ .Paginator.Prev.PageNumber }}</a></li>
+        {{ end }}
+        <li><a class="pagination-link is-current" aria-label="{{ i18n "page" .Paginator.PageNumber }}" aria-current="page">{{ .Paginator.PageNumber }}</a></li>
+        {{ if .Paginator.HasNext }}
+          <li><a class="pagination-link" aria-label="{{ i18n "goto-page" .Paginator.Next.PageNumber }}">{{ .Paginator.Next.PageNumber }}</a></li>
+        {{ end }}
+        {{ if ge .Paginator.TotalPages 5 }}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li><a class="pagination-link" href="{{ .Paginator.Last.URL }}" aria-label="Goto page 1">{{ .Paginator.TotalPages }}</a></li>
+        {{ end }}
+      </ul>
     {{ end }}
-  </div>
-{{ end }}
+    */}}
+  </nav>
 </section>
+{{ end }}

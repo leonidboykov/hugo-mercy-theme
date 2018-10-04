@@ -1,11 +1,31 @@
 <div class="section">
   <div class="container">
     {{ range .Pages }}
-      <article class="media">
+      <article class="media block">
         <div class="media-body">
           <h3 class="title is-3"><a href="{{ .URL }}">{{ .Title }}</a></h3>
+          {{ if .Params.tags }}
+          <div class="tags">
+            {{ range .Params.tags }}
+              <span class="tag">
+                <a class="has-text-dark" href="/tags/{{ . | urlize }}">{{ . }}</a>
+              </span>
+            {{ end }}
+          </div>
+          {{ end }}
           <p class="content">{{ .Summary }}</p>
-          <a class="button is-link is-outlined" href="{{ .URL }}">{{ "read-more" | i18n }}</a>
+          <div class="level is-mobile">
+            <div class="level-left">
+              <div class="level-item">
+                <a class="button" href="{{ .URL }}">{{ "read-more" | i18n }}</a>
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <span class="is-size-7-mobile has-text-grey-light">{{ i18n "reading-time" .ReadingTime }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
     {{ end }}

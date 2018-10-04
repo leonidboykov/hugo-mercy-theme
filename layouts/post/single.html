@@ -5,7 +5,7 @@
     </div>
   </section>
 
-  {{ $posts := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+  {{ $posts := .Site.RegularPages.Related . | first 3 }}
   {{ if $posts }}
     <section class="section">
       <div class="container">
