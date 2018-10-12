@@ -35,6 +35,6 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "bulma": "^0.7.1"
+    "bulma": "^0.7.2"
   }
 }
