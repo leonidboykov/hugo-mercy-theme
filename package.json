@@ -31,7 +31,7 @@
     "autoprefixer": "^9.4.3",
     "cssnano": "^4.1.8",
     "node-sass": "^4.11.0",
-    "postcss-cli": "^6.1.0",
+    "postcss-cli": "^6.1.1",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
