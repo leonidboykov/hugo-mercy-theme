@@ -4,11 +4,11 @@
   "description": "Minimal clean blog theme for Hugo",
   "main": "sass/main.sass",
   "scripts": {
-    "build": "npm run build-clean && npm run build-sass && npm run build-postcss",
-    "build-clean": "rimraf static/css",
-    "build-postcss": "postcss --output static/css/main.css static/css/main.css",
-    "build-sass": "node-sass --output-style expanded sass/main.sass static/css/main.css",
-    "start": "npm run build-sass -- --watch"
+    "build": "npm-run-all clean build:*",
+    "build:sass": "node-sass --include-path node_modules --output-style expanded sass/main.sass static/css/main.css",
+    "build:postcss": "postcss --output static/css/main.css static/css/main.css",
+    "clean": "rimraf static/css",
+    "start": "npm run build:sass -- --watch"
   },
   "repository": {
     "type": "git",
@@ -28,13 +28,14 @@
   "homepage": "https://github.com/leonidboykov/hugo-theme-mercy#readme",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.1.0",
-    "autoprefixer": "^9.4.3",
-    "cssnano": "^4.1.8",
+    "autoprefixer": "^9.4.8",
+    "cssnano": "^4.1.10",
     "node-sass": "^4.11.0",
-    "postcss-cli": "^6.1.0",
-    "rimraf": "^2.6.2"
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.1",
+    "rimraf": "^2.6.3"
   },
   "dependencies": {
-    "bulma": "^0.7.2"
+    "bulma": "^0.7.4"
   }
 }
